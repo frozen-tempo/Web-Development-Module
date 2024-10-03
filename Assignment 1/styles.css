@@ -1,0 +1,265 @@
+/* 
+Assignment 1 - Tech News Web Page
+Luke Gilbert - 27/09/2024
+Student No: 2307369
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid black; */
+  font-family: Montserrat;
+}
+
+body {
+  background-color: #edf6f9;
+}
+
+h1 {
+  width: 75vw;
+  margin: 2.5vh 12.5vw 0 auto;
+  color: #006d77;
+}
+
+footer {
+  background-color: #83c5be;
+  padding-left: 12.5vw;
+  color: #edf6f9;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Navbar Styling */
+
+nav {
+  display: flex;
+  padding: 1% 12.5vw 1% 12.5vw;
+  justify-content: space-between;
+  justify-self: center;
+  flex: 1;
+  background-color: #006d77;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+nav > img {
+  height: 50px;
+  width: auto;
+  color: #83c5be;
+  transition: all 500ms ease-in-out;
+  cursor: pointer;
+}
+
+nav > ul {
+  display: flex;
+  min-width: 50%;
+  justify-content: center;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  padding-inline: 5%;
+  align-content: center;
+  color: #edf6f9;
+  transition: all 500ms ease-in-out;
+  opacity: 25%;
+}
+
+li > a {
+  cursor: pointer;
+}
+
+nav > span {
+  align-content: center;
+}
+
+/* Remove default button styling */
+nav > span > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Nav Button Styling */
+
+#login-button {
+  color: #edf6f9;
+  padding: 1em;
+}
+
+#signup-button {
+  background-color: #006d77;
+  padding: 0.75em 1em;
+  border-radius: 1em;
+  color: #edf6f9;
+  border: 1px solid #edf6f9;
+  transition: all 1s ease-in-out;
+}
+
+/* Hero Styling */
+
+#hero-section {
+  display: flex;
+  width: 75vw;
+  flex-wrap: wrap;
+  height: 65vh;
+  margin: 2.5vh 12.5vw 5vh auto;
+  filter: brightness(100%);
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.news.large {
+  height: 65vh;
+  margin: 0 12.5vw 0 auto;
+}
+
+.news.large > figure {
+  height: 65vh;
+}
+
+.news.large > figure > img {
+  width: 75vw;
+  height: 65vh;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: all 1s ease-in-out;
+}
+
+#hero-section > .news.large > p {
+  display: flex;
+  color: #edf6f9;
+  position: absolute;
+  bottom: 0;
+  font-size: 1em;
+  padding-inline: 2.5vw;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+article.news.large > figure > figcaption {
+  color: #edf6f9;
+  position: relative;
+  bottom: 62.5vh;
+  font-size: 2em;
+  left: 2.5vw;
+  text-wrap: wrap;
+  width: 75vw;
+}
+
+/* News Article Styling */
+
+#news-article {
+  position: relative;
+  width: 75vw;
+  margin: 5vh 12.5vw 5vh auto;
+  justify-content: space-between;
+  height: 15vh;
+  border-radius: 1em;
+}
+
+#news-article > img {
+  position: relative;
+  width: 75vw;
+  object-fit: cover;
+  object-position: 50% 50%;
+  z-index: 100;
+  height: 15vh;
+  transition: all 1s ease-in-out;
+}
+
+#article-info {
+  position: absolute;
+  z-index: 50;
+  top: 0%;
+  left: 25vw;
+  width: 35vw;
+  padding-inline: 1em;
+  height: 15vh;
+  align-content: center;
+}
+
+#article-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  z-index: 50;
+  top: 0%;
+  right: 0;
+  padding-inline: 1em;
+  height: 15vh;
+}
+
+#article-buttons > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  background-color: #006d77;
+  padding: 0.75em 1em;
+  border-radius: 1em;
+  color: #edf6f9;
+  border: 1px solid #edf6f9;
+  transition: all 1s ease-in-out;
+}
+
+/* Article Page Styling */
+
+#news-story {
+  display: flex;
+  width: 75vw;
+  flex-wrap: wrap;
+  height: 65vh;
+  margin: 5vh 12.5vw 5vh auto;
+  filter: brightness(100%);
+  position: relative;
+  text-decoration: none;
+  flex-direction: column;
+}
+
+#news-story > .news.large > p {
+  padding-block: 5vh;
+  text-align: justify;
+}
+
+/* Hover Effects */
+
+nav > img:hover {
+  filter: brightness(125%);
+}
+
+nav > ul > li:hover {
+  opacity: 100%;
+}
+
+#signup-button:hover {
+  background-color: #edf6f9;
+  color: #006d77;
+}
+
+#hero-section:hover img {
+  filter: brightness(50%);
+}
+
+#hero-section:hover .news.large > p {
+  opacity: 1;
+  bottom: 5vh;
+}
+
+#news-article:hover img,
+#article-info {
+  width: 25vw;
+  z-index: 1 !important;
+}
+
+#article-buttons > button:hover {
+  background-color: #edf6f9;
+  color: #006d77;
+  z-index: 2;
+}

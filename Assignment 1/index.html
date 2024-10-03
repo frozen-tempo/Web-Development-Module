@@ -1,0 +1,143 @@
+<!-- Assignment 1 - Tech News Web Page Luke Gilbert - 27/09/2024 Student No:
+2307369 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Tech News Daily</title>
+  </head>
+  <body>
+    <!--Navigation bar to allow users to go between different pages on the site -->
+    <nav>
+      <img
+        src="images/logo.svg"
+        alt="Logo for Tech News Daily"
+        onclick="location.href='index.html'"
+      />
+      <ul>
+        <li><a onclick="location.href='index.html'">LATEST</a></li>
+        <li><a>GAMING</a></li>
+        <li><a>AI</a></li>
+        <li><a>BUSINESS</a></li>
+        <li><a>SOCIAL</a></li>
+      </ul>
+      <span>
+        <button id="login-button">Login</button>
+        <button id="signup-button">Sign Up</button>
+      </span>
+    </nav>
+    <h1>TECH NEWS DAILY</h1>
+    <!--Hero section showing the main curated news stories for the user -->
+    <div id="hero-section" onclick="location.href='hero_article.html'">
+      <article class="news large">
+        <figure>
+          <img
+            src="images/hero_img.jpg"
+            alt="Photo of a computer motherboard"
+          />
+          <figcaption>MOTHERBOARDS: AN IDIOTS GUIDE</figcaption>
+        </figure>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+          Aliquam egestas convallis lectus eget congue...
+        </p>
+      </article>
+    </div>
+    <!--Ordered list of the top news articles on the main page for a given day. -->
+    <!--Each article includes an image, headline and brief synopsis of the story. -->
+    <ol>
+      <article id="news-article">
+        <img
+          src="images/article_img01.jpg"
+          alt="Photo of a laptop in the dark"
+        />
+        <div id="article-info">
+          <h2>The Impact of Tech Usage on Sleep</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+            Aliquam egestas convallis lectus eget congue...
+          </p>
+        </div>
+        <div id="article-buttons">
+          <button onclick="location.href='article01.html'">Read More</button>
+          <button>Save For Later</button>
+        </div>
+      </article>
+      <article id="news-article">
+        <img src="images/article_img02.jpg" alt="Photo of a white robot" />
+        <div id="article-info">
+          <h2>Robots: Friend or Foe?</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+            Aliquam egestas convallis lectus eget congue...
+          </p>
+        </div>
+        <div id="article-buttons">
+          <button onclick="location.href='article02.html'">Read More</button>
+          <button>Save For Later</button>
+        </div>
+      </article>
+      <article id="news-article">
+        <img
+          src="images/article_img03.jpg"
+          alt="Photo of a desk with coffee, a notepad and a laptop"
+        />
+        <div id="article-info">
+          <h2>Effective Tips to Stop Procrastination</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+            Aliquam egestas convallis lectus eget congue...
+          </p>
+        </div>
+        <div id="article-buttons">
+          <button onclick="location.href='article03.html'">Read More</button>
+          <button>Save For Later</button>
+        </div>
+      </article>
+      <article id="news-article">
+        <img
+          src="images/article_img04.jpg"
+          alt="Photo of a two computer monitors"
+        />
+        <div id="article-info">
+          <h2>The Ultimate Coding Setup</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+            Aliquam egestas convallis lectus eget congue...
+          </p>
+        </div>
+        <div id="article-buttons">
+          <button onclick="location.href='article04.html'">Read More</button>
+          <button>Save For Later</button>
+        </div>
+      </article>
+      <article id="news-article">
+        <img src="images/article_img05.jpg" alt="Photo of computer fans" />
+        <div id="article-info">
+          <h2>Microsoft Adds New Servers to Cloud Service</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            risus nisl, vulputate sit amet fringilla non, auctor vitae eros.
+            Aliquam egestas convallis lectus eget congue...
+          </p>
+        </div>
+        <div id="article-buttons">
+          <button onclick="location.href='article05.html'">Read More</button>
+          <button>Save For Later</button>
+        </div>
+      </article>
+    </ol>
+  </body>
+  <footer>
+    Tech News Daily - A Tech News Website for All Your Tech Needs (Luke Gilbert
+    - 2307369)
+  </footer>
+</html>
