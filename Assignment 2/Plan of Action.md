@@ -1,0 +1,41 @@
+- [ ] Planning and Documentation
+	- [ ] Pages
+	- [ ] User Navigation Flowchart
+	- [ ] Pseudocode for Page Functionality
+	- [ ] Database Schema
+
+- [ ] Responsive Design
+	- [ ] Bootstrap
+	- [ ] Desktop
+	- [ ] Mobile
+	- [ ] Chrome
+	- [ ] Safari
+
+- [ ] Design, Usability and Accessibility
+	- [ ] Font - Readable, Responsive etc.
+	- [ ] Intuitive UI Design, Onboarding
+	- [ ] Simplistic Colour Scheme, Brand Identity
+	- [ ] Contrast in Design
+	- [ ] Usability principles (Nielsen Norman)
+
+- [ ] Functionality
+	- [ ] PHP
+		- [ ] Data Retrieval For Dynamic Profile Pages
+		- [ ] Search Bar
+		- [ ] Read Database to View Posts and Comments
+		- [ ] Writing to Database to Create Posts and Comments
+	- [ ] Login/Logout using JS Dom Events
+	- [ ] Post Liking using JS Dom Events
+	- [ ] User registration with 2 user levels
+		- [ ] User level 1 can post and comment
+		- [ ] User level 2 can post, comment and delete
+	- [ ] Password management
+		- [ ] Encryption
+		- [ ] MFA
+- [ ] Content
+	- [ ] Website Logo
+	- [ ] Bootstrap JS Carousel
+	- [ ] Search Bar
+	- [ ] Example User Profile
+	- [ ] Example User Profile Post
+	- [ ] Example Comment
