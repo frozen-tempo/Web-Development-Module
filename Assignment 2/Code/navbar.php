@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Signup Page</h1>
+    <nav>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </nav>
 </body>
 </html>
