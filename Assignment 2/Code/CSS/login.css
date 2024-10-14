@@ -1,5 +1,32 @@
 .primary-button {
-  background-color: #40916c;
+  background-color: #234f3b;
   color: white;
   font-weight: bold;
+  transition: all 250ms;
+  border: 1px solid #234f3b;
+  border-radius: 15px;
+}
+
+.primary-button:hover {
+  background-color: white;
+  color: #234f3b;
+  font-weight: bold;
+  border: 1px solid #234f3b;
+}
+
+.secondary-button {
+  background-color: white;
+  color: #234f3b !important;
+  border: 1px solid #234f3b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 250ms;
+  border-radius: 15px;
+}
+
+.secondary-button:hover {
+  background-color: #234f3b;
+  color: white !important;
+  font-weight: bold;
+  border: 1px solid #234f3b;
 }

@@ -12,9 +12,16 @@ function CheckLoginStatus($con) {
             $user_data = mysqli_fetch_assoc($result);
             return $user_data;
         }
-}
+    }
     //Redirect User to Login Page
     header("Location: login.php");
     die;
     }
+
+function GetUserPosts($con) {
+    if (isset($_SESSION["userID"])){
+
+        $userID = $_SESSION["userID"];
+    }
+}
 ?>

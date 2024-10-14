@@ -6,20 +6,14 @@ kanban-plugin: board
 
 ## Planned
 
-- [ ] Bootstrap #Responsiveness
-- [ ] Desktop #Responsiveness
-- [ ] Mobile #Responsiveness
-- [ ] Browser Support (Chrome/Safari) #Responsiveness
 - [ ] Font Design #DesignAndUsability
 - [ ] UI Design and Onboarding #DesignAndUsability
-- [ ] Colour Scheme, Brand Identity #DesignAndUsability
 - [ ] Design Contrast #DesignAndUsability
 - [ ] Usability Heuristics #DesignAndUsability
 - [ ] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
 - [ ] Search Bar Using PHP #Functionality
 - [ ] Reading Posts and Comments from DB using PHP #Functionality
 - [ ] Writing Posts and Comments to DB using PHP #Functionality
-- [ ] Login/Logout using JS DOM Events #Functionality
 - [ ] Post Interaction using JS DOM Events #Functionality
 - [ ] Multi Level User Registration #Functionality
 - [ ] Password Management #Functionality
@@ -32,10 +26,15 @@ kanban-plugin: board
 
 ## Researching
 
+- [ ] Login/Logout using JS DOM Events #Functionality
 
 
 ## In Progress
 
+- [ ] Bootstrap #Responsiveness
+- [ ] Desktop #Responsiveness
+- [ ] Mobile #Responsiveness
+- [ ] Browser Support (Chrome/Safari) #Responsiveness
 
 
 ## Completed
@@ -46,6 +45,7 @@ kanban-plugin: board
 - [x] Page Pseudocode #PlanningAndDocumentation
 - [x] Database Schema #PlanningAndDocumentation
 - [x] Website Logo #Content
+- [x] Colour Scheme, Brand Identity #DesignAndUsability
 
 
 ***

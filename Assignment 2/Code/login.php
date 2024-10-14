@@ -43,34 +43,36 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/login.css">
 <body>
-    <div class = "container">
-        <div class = "row">
-            <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8">
-                <img/>
-                <form method = "post" class = "text-center mx-5">
+    <div class = "container align-items-center" style="height: 100vh;">
+        <div class = "row h-100">
+            <div class="col-lg-4 col-md-2 my-auto"></div>
+            <div class="col-lg-4 col-md-8 my-auto text-center">
+                <img class = "mb-4" src="./Assets/logo.svg"/>
+                <form method = "post" class = "text-center">
                     <label class = "sr-only" for="userEmailInput">Email Address</label>
                         <input 
-                        class = "form-control mb-3" 
+                        class = "form-control my-3 rounded-pill pl-3" 
                         id="userEmailInput" 
                         type="email" 
                         name="userEmail"
                         placeholder="Email Address"
                         required/>
                     
-                    <label class = "sr-only" for="userPasswordInput">Email Address</label>
+                    <label class = "sr-only" for="userPasswordInput">Password</label>
                         <input 
-                        class = "form-control mb-3" 
+                        class = "form-control mb-3 rounded-pill pl-3" 
                         id="userPasswordInput" 
                         type="password" 
                         name="userPassword"
                         placeholder="Password"
                         required/>
-                    <input class="btn primary-button btn-block mb-3" id="button" type="submit" value="Login">
-
+                    <input class="primary-button btn-block mt-4 mb-3 py-3" id="button" type="submit" value="Login">
+                    <a class = "link-primary mb-2" href="password_recovery.php">Forgotten your password?</a>
+                    <hr>
+                    <a class="secondary-button btn-block mt-4 py-3" href = "signup.php">Create Account</a>
                 </form>
             </div>
-            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-4 col-md-2 my-auto"></div>
         </div>
     </div>
 </body>
