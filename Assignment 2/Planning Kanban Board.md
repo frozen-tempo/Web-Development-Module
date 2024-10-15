@@ -6,16 +6,13 @@ kanban-plugin: board
 
 ## Planned
 
-- [ ] Font Design #DesignAndUsability
 - [ ] UI Design and Onboarding #DesignAndUsability
-- [ ] Design Contrast #DesignAndUsability
 - [ ] Usability Heuristics #DesignAndUsability
 - [ ] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
 - [ ] Search Bar Using PHP #Functionality
 - [ ] Reading Posts and Comments from DB using PHP #Functionality
 - [ ] Writing Posts and Comments to DB using PHP #Functionality
 - [ ] Post Interaction using JS DOM Events #Functionality
-- [ ] Multi Level User Registration #Functionality
 - [ ] Password Management #Functionality
 - [ ] Bootstrap JS Carousel #Content
 - [ ] Search Bar #Content
@@ -27,6 +24,7 @@ kanban-plugin: board
 ## Researching
 
 - [ ] Login/Logout using JS DOM Events #Functionality
+- [ ] Multi Level User Registration #Functionality
 
 
 ## In Progress
@@ -46,6 +44,8 @@ kanban-plugin: board
 - [x] Database Schema #PlanningAndDocumentation
 - [x] Website Logo #Content
 - [x] Colour Scheme, Brand Identity #DesignAndUsability
+- [x] Design Contrast #DesignAndUsability
+- [x] Font Design #DesignAndUsability
 
 
 ***
