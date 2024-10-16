@@ -33,72 +33,7 @@ session_start();
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="CSS/signup.css" />
-
-    <script>
-
-      function passwordValidator() {
-
-        var passwordField=document.getElementById("userPassword");
-        var lowercase=document.getElementById("lowercaseLetter");
-        var captial=document.getElementById("capitalLetter");
-        var number=document.getElementById("number");
-        var specialChar=document.getElementById("specialChar");
-        var length =document.getElementById("length")
-        var [lowercaseCheck,capitalCheck,numberCheck, specialCharCheck, lengthCheck] = [false,false,false,false,false];
-        var overallCheck = lowercaseCheck && capitalCheck && numberCheck && specialCharCheck;
-        
-        // Show password validator message when user clicks onto the input field to input password
-        passwordField.onfocus = function () {
-          document.getElementById("pwValidatorMessage").style.display = "block";
-        }
-
-        // Hide password validator message when user clicks away
-        passwordField.onblur = function () {
-          document.getElementById("pwValidatorMessage").style.display = "none";
-        }
-
-        // Function to check and update the DOM whenever user inputs a character into password field
-        passwordField.onkeyup = function() {
-
-          // Lowercase password check
-          var lowercaseRegEx = "/[a-z]/g";
-          if (passwordField.value.match(lowercaseRegEx)) {
-            lowercase.classList.remove("invalid");
-            lowercase.classList.add("valid");
-          }
-
-          // Captial password check
-          var capitalRegEx = "/[A-Z]/g";
-          if (passwordField.value.match(captialRegEx)) {
-            capital.classList.remove("invalid");
-            capital.classList.add("valid");
-          }
-
-          // Number password check
-          var numberRegEx = "/[0-9]/g";
-          if (passwordField.value.match(numberRegEx)) {
-            number.classList.remove("invalid");
-            number.classList.add("valid");
-          }
-
-          // Special Character password check
-          var speciallRegEx = "/[^A-Za-z0-9]/g";
-          if (passwordField.value.match(specilalcaseRegEx)) {
-            specialChar.classList.remove("invalid");
-            specialChar.classList.add("valid");
-          }
-
-          // Length of password check
-          if (passwordField.value.length >= 8) {
-            length.classList.remove("invalid");
-            length.classList.add("valid");
-          }
-
-        }
-
-      }
-
-    </script>
+    
   </head>
   <body>
     <div class="container align-items-center" style="height: 100vh">
@@ -137,24 +72,22 @@ session_start();
               placeholder="Email Address"
               required
             />
-
             <label class="sr-only" for="userPassword">Password</label>
-            <input
-              class="form-control my-3 rounded-pill pl-3"
-              id="userPassword"
-              type="password"
-              name="userPassword"
-              placeholder="Password"
-              required
-            />
-            <img src = "./Assets/accept.png"/>
-            <div id = "pwValidatorMessage">
-              <h3>Minimum password security requirements:</h3>
-              <p id="lowercaseLetter">At least 1 <b>lowercase</b> letter</p>
-              <p id="captialLetter">At least 1 <b>captial</b> letter</p>
-              <p id="number">At least 1 <b>number (0-9)</b></p>
-              <p id="specialChar">At least 1 <b>special character (e.g. !@#$£%&)</b></p>
-              <p id="length">Must be at least <b>8 characters long</b></p>
+              <input
+                class="form-control my-3 rounded-pill pl-3"
+                id="userPassword"
+                type="password"
+                name="userPassword"
+                placeholder="Password"
+                required
+              />
+            <div id = "pwValidatorMessage" >
+              <h5>Minimum password security requirements:</h5>
+              <p id="lowercaseLetter" class="invalid">At least 1 <b>lowercase</b> letter</p>
+              <p id="capitalLetter" class="invalid">At least 1 <b>capital</b> letter</p>
+              <p id="number" class="invalid">At least 1 <b>number (0-9)</b></p>
+              <p id="specialChar" class="invalid">At least 1 <b>special character (e.g. !@#$£%&)</b></p>
+              <p id="length" class="invalid">Must be at least <b>8 characters long</b></p>
             </div>
 
             <label class="sr-only" for="userRepeatPassword"
@@ -191,5 +124,6 @@ session_start();
         <div class="col-lg-3 col-md-2 my-auto"></div>
       </div>
     </div>
+    <script src="signup.js";></script>
   </body>
 </html>

@@ -41,9 +41,21 @@
 /* Password Validator */
 
 .valid {
+  text-align: left;
   color: green;
 }
 
 .invalid {
+  text-align: left;
   color: red;
+}
+
+.password-check {
+  height: 25px;
+  width: auto;
+}
+
+#pwValidatorMessage {
+  display: none;
+  text-align: left;
 }
