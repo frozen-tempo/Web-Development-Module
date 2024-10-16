@@ -1,3 +1,4 @@
+/* Button Styling */
 .primary-button {
   background-color: #234f3b;
   color: white;
@@ -31,7 +32,18 @@
   border: 1px solid #234f3b;
 }
 
+/* Logo Styling */
 .logo-main {
   max-width: 150px;
   height: auto;
+}
+
+/* Password Validator */
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
 }

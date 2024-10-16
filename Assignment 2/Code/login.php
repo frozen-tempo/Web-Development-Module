@@ -45,8 +45,8 @@ session_start();
 <body>
     <div class = "container align-items-center" style="height: 100vh;">
         <div class = "row h-100">
-            <div class="col-lg-4 col-md-2 my-auto"></div>
-            <div class="col-lg-4 col-md-8 my-auto text-center">
+            <div class="col-lg-3 col-md-2 my-auto"></div>
+            <div class="col-lg-6 col-md-8 my-auto text-center">
                 <img class = "mb-4" src="./Assets/logo.svg"/>
                 <form method = "post" class = "text-center">
                     <label class = "sr-only" for="userEmailInput">Email Address</label>
@@ -72,7 +72,7 @@ session_start();
                     <a class="secondary-button btn-block mt-4 py-3" href = "signup.php">Create Account</a>
                 </form>
             </div>
-            <div class="col-lg-4 col-md-2 my-auto"></div>
+            <div class="col-lg-3 col-md-2 my-auto"></div>
         </div>
     </div>
 </body>

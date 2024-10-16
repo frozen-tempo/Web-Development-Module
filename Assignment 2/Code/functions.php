@@ -25,7 +25,29 @@
         }
     }
 
-    function CheckSignupInformation ($con) {
-        return;
+    function CheckSignupNames ($con, $firstName, $lastName) {
+        if (!empty($firstName) && !empty($lastName) && !is_numeric($firstName) && !is_numeric($lastName)) {
+        return [true, ""];
+        }
+        else {
+            return [false, "Valid first and last names must be entered to sign up"];
+        }
     }
+
+
+    function CheckSignupEmail ($con, $email) {
+        $emailRegExPattern = "/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8}(\.[a-z]{2,8})?$/";
+
+        if (!preg_match($emailRegExPattern, $email)) {
+            return [false,"Invalid email, please enter valid email to signup"];
+        }
+        else {
+            return [true,""];
+        }
+    }
+    function CheckSignupPassword ($con, $password) {
+
+
+    }
+
 ?>
