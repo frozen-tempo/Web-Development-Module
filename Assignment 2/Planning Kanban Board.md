@@ -13,7 +13,6 @@ kanban-plugin: board
 - [ ] Reading Posts and Comments from DB using PHP #Functionality
 - [ ] Writing Posts and Comments to DB using PHP #Functionality
 - [ ] Post Interaction using JS DOM Events #Functionality
-- [ ] Password Management #Functionality
 - [ ] Bootstrap JS Carousel #Content
 - [ ] Search Bar #Content
 - [ ] Example Profile #Content
@@ -25,6 +24,7 @@ kanban-plugin: board
 
 - [ ] Login/Logout using JS DOM Events #Functionality
 - [ ] Multi Level User Registration #Functionality
+- [ ] Password Management #Functionality
 
 
 ## In Progress
@@ -46,6 +46,7 @@ kanban-plugin: board
 - [x] Colour Scheme, Brand Identity #DesignAndUsability
 - [x] Design Contrast #DesignAndUsability
 - [x] Font Design #DesignAndUsability
+- [x] Password Validator JS DOM #DesignAndUsability
 
 
 ***
