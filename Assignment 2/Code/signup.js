@@ -5,19 +5,6 @@ function passwordValidator() {
   var number = document.getElementById("number");
   var specialChar = document.getElementById("specialChar");
   var length = document.getElementById("length");
-  var [
-    lowercaseCheck,
-    capitalCheck,
-    numberCheck,
-    specialCharCheck,
-    lengthCheck,
-  ] = [false, false, false, false, false];
-  var overallCheck =
-    lowercaseCheck &&
-    capitalCheck &&
-    numberCheck &&
-    specialCharCheck &&
-    lengthCheck;
 
   // Show password validator message when user clicks onto the input field to input password
   passwordField.onfocus = function () {
@@ -31,8 +18,7 @@ function passwordValidator() {
 
   // Function to check and update the DOM whenever user inputs a character into password field
   passwordField.onkeyup = function () {
-    console.log("entered character");
-    // Lowercase password check
+    // Lowercase password check checks if password contains lowercase letter
     var lowercaseRegEx = /[a-z]/g;
     if (passwordField.value.match(lowercaseRegEx)) {
       lowercase.classList.remove("invalid");
@@ -42,7 +28,7 @@ function passwordValidator() {
       lowercase.classList.add("invalid");
     }
 
-    // Captial password check
+    // Captial password check checks if password contains captial letter
     var capitalRegEx = /[A-Z]/g;
     if (passwordField.value.match(capitalRegEx)) {
       capital.classList.remove("invalid");
@@ -52,7 +38,7 @@ function passwordValidator() {
       capital.classList.add("invalid");
     }
 
-    // Number password check
+    // Number password check - checks if password contains number
     var numberRegEx = /[0-9]/g;
     if (passwordField.value.match(numberRegEx)) {
       number.classList.remove("invalid");
@@ -62,7 +48,7 @@ function passwordValidator() {
       number.classList.add("invalid");
     }
 
-    // Special Character password check
+    // Special Character password check - checks if password contains special character
     var specialRegEx = /[^A-Za-z0-9]/g;
     if (passwordField.value.match(specialRegEx)) {
       specialChar.classList.remove("invalid");
@@ -72,7 +58,7 @@ function passwordValidator() {
       specialChar.classList.add("invalid");
     }
 
-    // Length of password check
+    // Length of password check checks if password is at least 8 characters long
     if (passwordField.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");

@@ -8,6 +8,8 @@ session_start();
 
         $userEmail = $_POST["userEmail"];
         $userPassword = $_POST["userPassword"];
+        $loginError = "";
+        $showUserWelcome = false;
 
         if (!empty($userEmail) && !empty($userPassword)) {
 
@@ -18,16 +20,17 @@ session_start();
 
                 $user_data = mysqli_fetch_assoc($result);
 
-                if ($user_data["userPassword"] === $userPassword) {
+                if (password_verify($_POST["userPassword"], $user_data["userPassword"])) {
                     $_SESSION['userID'] = $user_data['userID'];
-                    header("Location: index.php");
-                    die;
+                    $showUserWelcome = true;
+                    header("refresh:5;url=index.php");
+                    die();
                 }
             }
-            echo "Incorrect Login Information, Please Try Again.";
+            $errorMessage = "Incorrect Login Information, Please Try Again.";
         }
     else {
-        echo "Incorrect Login Information, Please Try Again.";
+        $errorMessage = "Incorrect Login Information, Please Try Again.";
     }
 }
 ?>
@@ -46,9 +49,21 @@ session_start();
     <div class = "container align-items-center" style="height: 100vh;">
         <div class = "row h-100">
             <div class="col-lg-3 col-md-2 my-auto"></div>
-            <div class="col-lg-6 col-md-8 my-auto text-center">
+            <div class="col-lg-6 col-md-8 my-auto text-center fade-in">
+                <?php if ($showUserWelcome): ?>
+                <div id="welcome-screen" class = "fade-out">
+                    <img id="welcome-img" src = "https://img.freepik.com/free-vector/hand-drawn-fla…sign-people-waving-illustration_23-2149195759.jpg"/>
+                        <h1>Welcome <?php echo $_SESSION['userFirstName']?></h1>
+                        <p>Let's get you to your profile!</p>
+                </div>
+                <?php else: ?>
                 <img class = "mb-4" src="./Assets/logo.svg"/>
-                <form method = "post" class = "text-center">
+                <div class = "hidden" id = "login-error">
+                    <?php
+                        echo $errorMessage;
+                    ?>
+                </div>
+                <form id = "login-form" method = "post" class = "text-center">
                     <label class = "sr-only" for="userEmailInput">Email Address</label>
                         <input 
                         class = "form-control my-3 rounded-pill pl-3" 
@@ -71,9 +86,14 @@ session_start();
                     <hr>
                     <a class="secondary-button btn-block mt-4 py-3" href = "signup.php">Create Account</a>
                 </form>
+                <?php endif; ?>
             </div>
             <div class="col-lg-3 col-md-2 my-auto"></div>
         </div>
     </div>
+    <script>
+        var loginError = <?php echo json_encode($loginError = ""); ?>;
+    </script>
+    <script src="login.js";></script>
 </body>
 </html>

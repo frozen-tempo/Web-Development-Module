@@ -8,11 +8,6 @@ kanban-plugin: board
 
 - [ ] UI Design and Onboarding #DesignAndUsability
 - [ ] Usability Heuristics #DesignAndUsability
-- [ ] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
-- [ ] Search Bar Using PHP #Functionality
-- [ ] Reading Posts and Comments from DB using PHP #Functionality
-- [ ] Writing Posts and Comments to DB using PHP #Functionality
-- [ ] Post Interaction using JS DOM Events #Functionality
 - [ ] Bootstrap JS Carousel #Content
 - [ ] Search Bar #Content
 - [ ] Example Profile #Content
@@ -22,9 +17,11 @@ kanban-plugin: board
 
 ## Researching
 
-- [ ] Login/Logout using JS DOM Events #Functionality
-- [ ] Multi Level User Registration #Functionality
-- [ ] Password Management #Functionality
+- [ ] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
+- [ ] Reading Posts and Comments from DB using PHP #Functionality
+- [ ] Writing Posts and Comments to DB using PHP #Functionality
+- [ ] Post Interaction using JS DOM Events #Functionality
+- [ ] Search Bar Using PHP #Functionality
 
 
 ## In Progress
@@ -33,6 +30,9 @@ kanban-plugin: board
 - [ ] Desktop #Responsiveness
 - [ ] Mobile #Responsiveness
 - [ ] Browser Support (Chrome/Safari) #Responsiveness
+- [ ] Login/Logout using JS DOM Events #Functionality
+- [ ] Password Management #Functionality
+- [ ] Multi Level User Registration #Functionality
 
 
 ## Completed

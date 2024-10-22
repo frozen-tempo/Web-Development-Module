@@ -26,7 +26,7 @@
         }
     }
 
-    function CheckSignupNames ($con, $firstName, $lastName) {
+    function CheckSignupNames ($firstName, $lastName) {
         if (!empty($firstName) && !empty($lastName) && !is_numeric($firstName) && !is_numeric($lastName)) {
         return [true, ""];
         }
@@ -35,11 +35,10 @@
         }
     }
 
-
     function CheckSignupEmail ($con, $email) {
 
         // Check the email input is in the valid format
-        $emailRegExPattern = "/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8}(\.[a-z]{2,8})?$/";
+        $emailRegExPattern = "/^(?!.*[.]{2})([A-Za-z0-9._-])+@([A-Za-z])+.([A-Za-z]){2,8}$/";
         if (!preg_match($emailRegExPattern, $email)) {
             return [false,"Invalid email, please enter valid email to signup"];
         }
@@ -48,6 +47,7 @@
         $query = "SELECT * FROM Users WHERE userEmail = '$email'";
         $result = mysqli_query($con, $query);
 
+        // If a result is returned from the query then an entry exists and therefore the email entered is a duplicate
         if (mysqli_num_rows($result) > 0) {
             return [false,"Email already exists, please login or try another email"];
         }
@@ -55,17 +55,21 @@
         return [true,""];
 
     }
-    function CheckSignupPassword ($con, $password) {
-        $lowercaseRegex = "/[a-z]/g";
-        $capitalRegex = "/[A-Z]/g";
-        $numberRegex = "/[0-9]/g";
-        $specialRegex = "/[^A-Za-z0-9]/g";
+
+    function CheckSignupPassword ($password, $repeatPassword) {
+        $lowercaseRegex = "/[a-z]/";
+        $capitalRegex = "/[A-Z]/";
+        $numberRegex = "/[0-9]/";
+        $specialRegex = "/[^A-Za-z0-9]/";
 
         if (!preg_match($lowercaseRegex, $password) OR 
             !preg_match($capitalRegex, $password) OR
             !preg_match($numberRegex, $password) OR
             !preg_match($specialRegex, $password)) {
                 return [false,"Invalid password, please check requirements"];
+        }
+        if ($password !== $repeatPassword) {
+            return [false,"The passwords you have entered do not match, please try again"];
         }
         return [true,""];
     }
@@ -85,8 +89,24 @@
             return [true,"", "admin"];
         }
 
+    }
 
+    function CreateNewUser($con, $id, $accessLevel, $firstName, $lastName, $email, $password) {
+        $sqlQuery = $con->prepare("INSERT INTO Users (userID, userLevel, userFirstName, userLastName, userEmail, userPassword) VALUES (?, ?, ?, ?, ?, ?)");
+        if ($sqlQuery === false) {
+            echo "<br>" . "error preparing" . "<br>";
+        }
 
+        if (!$sqlQuery->bind_param("ssssss", $id, $accessLevel, $firstName, $lastName, $email, $password)) {
+            echo "<br>" . "error binding" . "<br>";
+        }
+
+        $querySuccessful = true;
+
+        if (!$sqlQuery->execute()) {
+            $querySuccessful = false;   
+        }
+            return $querySuccessful;
     }
 
 ?>

@@ -5,17 +5,39 @@ session_start();
   include("connection.php");
   include("functions.php");
 
-  $error_msg = "";
-  $userFirstName = $_POST["userFirstName"];
-  $userLastName = $_POST["userLastName"];
-  $userEmail = $_POST["userEmail"];
-  $userPassword = $_POST["userFirstName"];
-  $userRepeatPassword = $_POST["userRepeatPassword"];
-  $userAdminKey = $_POST["userAdminKey"];
-  $id = uniqid(rand(), false);
+  if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  
+    $userFirstName = $_POST["userFirstName"];
+    $userLastName = $_POST["userLastName"];
+    $userEmail = $_POST["userEmail"];
+    $userPassword = $_POST["userPassword"];
+    $userRepeatPassword = $_POST["userRepeatPassword"];
+    $userAdminKey = $_POST["userAdminKey"];
+    $id = uniqid(rand(), false);
 
+    if (
+      CheckSignupNames($userFirstName,$userLastName)[0] && 
+      CheckSignupEmail($con, $userEmail)[0] && 
+      CheckSignupPassword($userPassword, $userRepeatPassword)[0] &&
+      CheckAdminKey($con, $userAdminKey)[0]) {
+        $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+        CreateNewUser(
+          $con, 
+          $id, 
+          CheckAdminKey($con, $userAdminKey)[2], 
+          $userFirstName, 
+          $userLastName, 
+          $userEmail, 
+          $hashedPassword);
+        header("Location: login.php");
+        die();
+      }
+    else {
+      echo "Unable to create account, please try again";
+      die();
+    }
+
+  }
 ?>
 
 <!DOCTYPE html>
@@ -109,7 +131,6 @@ session_start();
               type="text"
               name="userAdminKey"
               placeholder="Admin Key (if applicable)"
-              required
             />
 
             <input
