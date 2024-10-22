@@ -49,3 +49,7 @@
 #welcome-screen {
   display: none;
 }
+
+#welcome-image {
+  width: 100%;
+}

@@ -14,6 +14,13 @@ session_start();
     $userRepeatPassword = $_POST["userRepeatPassword"];
     $userAdminKey = $_POST["userAdminKey"];
     $id = uniqid(rand(), false);
+    $signupError = "";
+    $errorList = 
+    [
+      CheckSignupNames($userFirstName, $userLastName)[1],
+      CheckSignupEmail($con, $userEmail)[1],
+      CheckSignupPassword($userPassword, $userRepeatPassword)[1] 
+    ];
 
     if (
       CheckSignupNames($userFirstName,$userLastName)[0] && 
@@ -33,10 +40,8 @@ session_start();
         die();
       }
     else {
-      echo "Unable to create account, please try again";
-      die();
+      $signupError = "Unable to create an account, please see the following errors: ";
     }
-
   }
 ?>
 
@@ -63,6 +68,17 @@ session_start();
         <div class="col-lg-3 col-md-2 my-auto"></div>
         <div class="col-lg-6 col-md-8 my-auto text-center">
           <img class="mb-4 logo-main" src="./Assets/logo.svg" />
+          <div class = "hidden" id = "signup-error">
+                    <?php
+                        echo "<p>$signupError</p>";
+                        foreach ($errorList as $error) {
+                          if ($error !== "") {
+                            echo "<p>$error</p>";
+                          }
+                        }
+                        
+                    ?>
+          </div>
           <form method="post" class="text-center mx-5">
             <h4>Create a new account</h4>
             <label class="sr-only" for="userFirstNameInput">First Name</label>
@@ -145,6 +161,9 @@ session_start();
         <div class="col-lg-3 col-md-2 my-auto"></div>
       </div>
     </div>
+    <script>
+        var signupError = <?php echo json_encode($signupError = ""); ?>;
+    </script>
     <script src="signup.js";></script>
   </body>
 </html>

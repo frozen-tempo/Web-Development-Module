@@ -24,14 +24,15 @@ session_start();
                     $_SESSION['userID'] = $user_data['userID'];
                     $showUserWelcome = true;
                     header("refresh:5;url=index.php");
-                    die();
+                }
+                else {
+                    $loginError = "Incorrect Login Information, Please Try Again.";
                 }
             }
-            $errorMessage = "Incorrect Login Information, Please Try Again.";
         }
-    else {
-        $errorMessage = "Incorrect Login Information, Please Try Again.";
-    }
+        else {
+            $loginError = "Please fill out the required fields for login.";
+        }
 }
 ?>
 
@@ -50,17 +51,15 @@ session_start();
         <div class = "row h-100">
             <div class="col-lg-3 col-md-2 my-auto"></div>
             <div class="col-lg-6 col-md-8 my-auto text-center fade-in">
-                <?php if ($showUserWelcome): ?>
-                <div id="welcome-screen" class = "fade-out">
-                    <img id="welcome-img" src = "https://img.freepik.com/free-vector/hand-drawn-fla…sign-people-waving-illustration_23-2149195759.jpg"/>
-                        <h1>Welcome <?php echo $_SESSION['userFirstName']?></h1>
-                        <p>Let's get you to your profile!</p>
-                </div>
-                <?php else: ?>
+                <?php if ($showUserWelcome):?>
+                    <img id = "welcome-image" src = "./Assets/welcome.svg"/>
+                    <h3>Hey <?php echo $user_data['userFirstName'];?></h3>
+                    <p>Let's get you back to your profile!</p>
+                <?php else:?>
                 <img class = "mb-4" src="./Assets/logo.svg"/>
                 <div class = "hidden" id = "login-error">
                     <?php
-                        echo $errorMessage;
+                        echo "<p>$loginError</p>";
                     ?>
                 </div>
                 <form id = "login-form" method = "post" class = "text-center">
@@ -86,13 +85,13 @@ session_start();
                     <hr>
                     <a class="secondary-button btn-block mt-4 py-3" href = "signup.php">Create Account</a>
                 </form>
-                <?php endif; ?>
+                <?php endif;?>
             </div>
             <div class="col-lg-3 col-md-2 my-auto"></div>
         </div>
     </div>
     <script>
-        var loginError = <?php echo json_encode($loginError = ""); ?>;
+        var loginError = <?php echo ($loginError != null) ? json_encode($loginError) : ""; ?>;
     </script>
     <script src="login.js";></script>
 </body>

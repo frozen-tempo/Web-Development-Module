@@ -69,4 +69,12 @@ function passwordValidator() {
   };
 }
 
+function handleSignup(signupError) {
+  if (signupError !== "") {
+    document.getElementById("signup-error").classList.remove("hidden");
+  } else {
+    document.getElementById("signup-error").classList.add("hidden");
+  }
+}
+
 passwordValidator();
