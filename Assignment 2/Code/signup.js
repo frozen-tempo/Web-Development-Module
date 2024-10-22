@@ -78,3 +78,4 @@ function handleSignup(signupError) {
 }
 
 passwordValidator();
+handleSignup(signupError);

@@ -46,10 +46,10 @@
   display: none;
 }
 
-#welcome-screen {
-  display: none;
+#welcome-image {
+  width: 75%;
 }
 
-#welcome-image {
-  width: 100%;
+#welcome-name {
+  color: #234f3b;
 }

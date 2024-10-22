@@ -68,7 +68,7 @@ session_start();
         <div class="col-lg-3 col-md-2 my-auto"></div>
         <div class="col-lg-6 col-md-8 my-auto text-center">
           <img class="mb-4 logo-main" src="./Assets/logo.svg" />
-          <div class = "hidden" id = "signup-error">
+          <div class = "hidden alert alert-danger" id = "signup-error">
                     <?php
                         echo "<p>$signupError</p>";
                         foreach ($errorList as $error) {
@@ -162,7 +162,7 @@ session_start();
       </div>
     </div>
     <script>
-        var signupError = <?php echo json_encode($signupError = ""); ?>;
+        var signupError = <?php echo ($signupError != null) ? json_encode($signupError) : ""; ?>;
     </script>
     <script src="signup.js";></script>
   </body>

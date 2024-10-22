@@ -50,16 +50,18 @@ session_start();
     <div class = "container align-items-center" style="height: 100vh;">
         <div class = "row h-100">
             <div class="col-lg-3 col-md-2 my-auto"></div>
-            <div class="col-lg-6 col-md-8 my-auto text-center fade-in">
+            <div class="col-lg-6 col-md-8 my-auto text-center">
                 <?php if ($showUserWelcome):?>
-                    <img id = "welcome-image" src = "./Assets/welcome.svg"/>
-                    <h3>Hey <?php echo $user_data['userFirstName'];?></h3>
-                    <p>Let's get you back to your profile!</p>
+                    <div>
+                        <img id="welcome-image" src = "./Assets/welcome.svg"/>
+                        <h1>Hey <b id = "welcome-name"><?php echo $user_data['userFirstName'];?> </b> </h1>
+                        <p>Let's get you back to your profile!</p>
+                    </div>
                 <?php else:?>
                 <img class = "mb-4" src="./Assets/logo.svg"/>
-                <div class = "hidden" id = "login-error">
+                <div class = "hidden alert alert-danger" id = "login-error">
                     <?php
-                        echo "<p>$loginError</p>";
+                        echo $loginError;
                     ?>
                 </div>
                 <form id = "login-form" method = "post" class = "text-center">
