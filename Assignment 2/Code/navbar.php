@@ -24,30 +24,9 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-left">
-            <img src = "./Assets/logo.svg"/>
-            <label class ="sr-only">Profile Search Bar</label>
-            <div class="search-bar">
-                <input 
-                    class="search-input" 
-                    type="text" 
-                    name="userProfileSearch" 
-                    placeholder="Search for an existing user's profile"
-                >
-                <img class="search-icon"/>
-            </div>
-        </div>
-        <ul class="nav-middle">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="nav-right">
-            <img src=""/>
-            <p><?php echo $user_data["userFirstName"]; ?></p>
-        </div>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#"><img src="./Assets/logo.svg"/></a>
+        
     </nav>
 </body>
 </html>

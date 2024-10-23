@@ -19,6 +19,15 @@
         die;
     }
 
+    function GetUserFriends($con) {
+        if (isset($_SESSION["userID"])){
+
+            $userID = $_SESSION["userID"];
+            $query = "SELECT * FROM Friendships WHERE userID = 'initiator' OR userID = 'responder'";
+        }
+    }
+
+
     function GetUserPosts($con) {
         if (isset($_SESSION["userID"])){
 
