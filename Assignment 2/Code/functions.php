@@ -23,7 +23,41 @@
         if (isset($_SESSION["userID"])){
 
             $userID = $_SESSION["userID"];
-            $query = "SELECT * FROM Friendships WHERE userID = 'initiator' OR userID = 'responder'";
+            $query = "SELECT * FROM Friendships WHERE (friendshipStatus = 'accepted' AND initiator = '$userID') OR (friendshipStatus = 'accepted' AND responder = '$userID')";
+            $friendships = [];
+            $friend_list =[];
+
+            $result = mysqli_query($con,$query);
+            
+            if ($result && mysqli_num_rows($result) > 0) {
+                foreach ($result as $friendship) {
+                    array_push($friendships, $friendship);
+                }
+            }
+
+            foreach ($friendships as $friend) {
+                if ($friend['initiator'] != $userID) {
+                    $friend_id = $friend['initiator'];
+                    $friend_query = "SELECT * FROM Users WHERE userID = '$friend_id' limit 1";
+                    $friend_result = mysqli_query($con,$friend_query);
+                    if ($friend_result && mysqli_num_rows($friend_result) > 0) {
+                        $friend_data = mysqli_fetch_assoc($friend_result);
+                        $friend_name = $friend_data["userFirstName"] . " " . $friend_data["userLastName"];
+                        array_push($friend_list, $friend_name);
+                    }
+                }
+                elseif ($friend['responder'] != $userID) {
+                    $friend_id = $friend['responder'];
+                    $friend_query = "SELECT * FROM Users WHERE userID = '$friend_id' limit 1";
+                    $friend_result = mysqli_query($con,$friend_query);
+                    if ($friend_result && mysqli_num_rows($friend_result) > 0) {
+                        $friend_data = mysqli_fetch_assoc($friend_result);
+                        $friend_name = $friend_data["userFirstName"] . " " . $friend_data["userLastName"];
+                        array_push($friend_list, $friend_name);
+                    }
+                }
+            }
+            return $friend_list;
         }
     }
 
