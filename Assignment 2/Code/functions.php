@@ -1,6 +1,5 @@
 <?php
 
-
     function CheckLoginStatus($con) {
 
         if (isset($_SESSION["userID"])){
@@ -19,6 +18,14 @@
         die;
     }
 
+    function GetUserInfo($con, $id) {
+        $query = "SELECT * FROM Users WHERE userID = '$id' limit 1";
+        $result = mysqli_query($con,$query);
+        $data = mysqli_fetch_assoc($result);
+
+        return $data;
+    }
+
     function GetUserFriends($con) {
         if (isset($_SESSION["userID"])){
 
@@ -30,30 +37,28 @@
             $result = mysqli_query($con,$query);
             
             if ($result && mysqli_num_rows($result) > 0) {
-                foreach ($result as $friendship) {
-                    array_push($friendships, $friendship);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    array_push($friendships, $row);
                 }
             }
 
             foreach ($friendships as $friend) {
                 if ($friend['initiator'] != $userID) {
                     $friend_id = $friend['initiator'];
-                    $friend_query = "SELECT * FROM Users WHERE userID = '$friend_id' limit 1";
-                    $friend_result = mysqli_query($con,$friend_query);
-                    if ($friend_result && mysqli_num_rows($friend_result) > 0) {
-                        $friend_data = mysqli_fetch_assoc($friend_result);
+                    $friend_data = GetUserInfo($con, $friend_id);
+                    if ($friend_data) {
                         $friend_name = $friend_data["userFirstName"] . " " . $friend_data["userLastName"];
-                        array_push($friend_list, $friend_name);
+                        $friend_photo = $friend_data["profilePhoto"];
+                        array_push($friend_list, [$friend_name, $friend_photo, $friend_id]);
                     }
                 }
                 elseif ($friend['responder'] != $userID) {
                     $friend_id = $friend['responder'];
-                    $friend_query = "SELECT * FROM Users WHERE userID = '$friend_id' limit 1";
-                    $friend_result = mysqli_query($con,$friend_query);
-                    if ($friend_result && mysqli_num_rows($friend_result) > 0) {
-                        $friend_data = mysqli_fetch_assoc($friend_result);
+                    $friend_data = GetUserInfo($con, $friend_id);
+                    if ($friend_data) {
                         $friend_name = $friend_data["userFirstName"] . " " . $friend_data["userLastName"];
-                        array_push($friend_list, $friend_name);
+                        $friend_photo = $friend_data["profilePhoto"];
+                        array_push($friend_list, [$friend_name, $friend_photo, $friend_id]);
                     }
                 }
             }
@@ -61,13 +66,38 @@
         }
     }
 
-
-    function GetUserPosts($con) {
+    function GetProfilePosts($con) {
         if (isset($_SESSION["userID"])){
 
             $userID = $_SESSION["userID"];
+            $post_list = [];
+            $query = "SELECT * FROM Posts WHERE userID = '$userID' ORDER BY postCreationDate DESC";
+            $result = mysqli_query($con,$query);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    array_push($post_list, $row);
+                }
+            }
+        return $post_list;
         }
     }
+
+    function GetPostComments($con, $post) {
+
+        $postID = $post['postID'];
+        $comment_list = [];
+        $query = "SELECT * FROM Comments WHERE postID = '$postID' ORDER BY commentCreationDate ASC";
+        $result = mysqli_query($con,$query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                array_push($comment_list, $row);
+            }
+        }
+        return $comment_list;
+    }
+
 
     function CheckSignupNames ($firstName, $lastName) {
         if (!empty($firstName) && !empty($lastName) && !is_numeric($firstName) && !is_numeric($lastName)) {
@@ -147,7 +177,7 @@
         $querySuccessful = true;
 
         if (!$sqlQuery->execute()) {
-            $querySuccessful = false;   
+            $querySuccessful = false;
         }
             return $querySuccessful;
     }
