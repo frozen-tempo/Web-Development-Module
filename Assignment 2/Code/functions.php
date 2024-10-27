@@ -26,10 +26,10 @@
         return $data;
     }
 
-    function GetUserFriends($con) {
+    function GetUserFriends($con, $id) {
         if (isset($_SESSION["userID"])){
 
-            $userID = $_SESSION["userID"];
+            $userID = $id;
             $query = "SELECT * FROM Friendships WHERE (friendshipStatus = 'accepted' AND initiator = '$userID') OR (friendshipStatus = 'accepted' AND responder = '$userID')";
             $friendships = [];
             $friend_list =[];
@@ -62,14 +62,33 @@
                     }
                 }
             }
-            return $friend_list;
+        }
+        return $friend_list;
+    }
+
+    function GetFeedPosts($con, $id) {
+        if (isset($_SESSION["userID"])){
+
+            $userID = $id;
+            $friends = GetUserFriends($con, $userID);
+            $post_list = [];
+            foreach ($friends as $friend) {
+                $query = "SELECT * FROM Posts WHERE userID = '$friend[2]' ORDER BY postCreationDate DESC";
+                $result = mysqli_query($con,$query);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        array_push($post_list, $row);
+                    }
+                }
+            }
+        return $post_list;
         }
     }
 
-    function GetProfilePosts($con) {
+    function GetProfilePosts($con, $id) {
         if (isset($_SESSION["userID"])){
 
-            $userID = $_SESSION["userID"];
+            $userID = $id;
             $post_list = [];
             $query = "SELECT * FROM Posts WHERE userID = '$userID' ORDER BY postCreationDate DESC";
             $result = mysqli_query($con,$query);
@@ -97,6 +116,33 @@
         }
         return $comment_list;
     }
+
+    function HandleCreateComment($con, $user_id, $post_id, $post_comment) {
+
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL);
+
+        $userID = $user_id;
+        $postID = $post_id;
+        $postComment = $post_comment;
+        $sqlQuery = $con->prepare("INSERT INTO Comments (userID, postID, commentText) VALUES (?, ?, ?)");
+        if ($sqlQuery === false) {
+            echo "<br>" . "error preparing" . "<br>";
+        }
+
+        if (!$sqlQuery->bind_param("sss", $userID, $postID, $postComment)) {
+            echo "<br>" . "error binding" . "<br>";
+        }
+
+        $querySuccessful = true;
+
+        if (!$sqlQuery->execute()) {
+            $querySuccessful = false;
+        }
+            return $querySuccessful;
+
+    }
+
 
 
     function CheckSignupNames ($firstName, $lastName) {

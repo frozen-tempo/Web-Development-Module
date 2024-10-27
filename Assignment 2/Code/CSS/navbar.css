@@ -1,0 +1,11 @@
+.nav-logo {
+  height: 50px;
+  width: auto;
+  margin-block: 7.5px;
+  border-radius: 50%;
+}
+
+.brand-primary {
+  background-color: #234f3b;
+  color: white;
+}
