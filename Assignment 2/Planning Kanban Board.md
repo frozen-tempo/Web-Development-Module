@@ -6,44 +6,44 @@ kanban-plugin: board
 
 ## Planned
 
-- [ ] UI Design and Onboarding #DesignAndUsability
-- [ ] Usability Heuristics #DesignAndUsability
-- [ ] Bootstrap JS Carousel #Content
-- [ ] Search Bar #Content
-- [ ] Example Profile #Content
-- [ ] Example Post #Content
-- [ ] Example Comment #Content
 
 
 ## Researching
 
-- [ ] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
-- [ ] Search Bar Using PHP #Functionality
 
 
 ## In Progress
 
-- [ ] Bootstrap #Responsiveness
-- [ ] Desktop #Responsiveness
-- [ ] Mobile #Responsiveness
-- [ ] Browser Support (Chrome/Safari) #Responsiveness
-- [ ] Post Interaction using JS DOM Events #Functionality
-- [ ] Writing Posts and Comments to DB using PHP #Functionality
 
 
 ## Completed
 
 **Complete**
 - [x] Website Pages and Scoping #PlanningAndDocumentation
+- [x] Bootstrap JS Carousel #Content
 - [x] User Navigation Flowchart #PlanningAndDocumentation
 - [x] Page Pseudocode #PlanningAndDocumentation
 - [x] Database Schema #PlanningAndDocumentation
 - [x] Website Logo #Content
 - [x] Colour Scheme, Brand Identity #DesignAndUsability
+- [x] UI Design and Onboarding #DesignAndUsability
 - [x] Design Contrast #DesignAndUsability
+- [x] Usability Heuristics #DesignAndUsability
 - [x] Font Design #DesignAndUsability
-- [x] Password Validator JS DOM #DesignAndUsability
+- [x] Search Bar #Content
+- [x] Example Comment #Content
+- [x] Desktop #Responsiveness
+- [x] Post Interaction using JS DOM Events #Functionality
+- [x] Example Profile #Content
 - [x] Multi Level User Registration #Functionality
+- [x] Bootstrap #Responsiveness
+- [x] Mobile #Responsiveness
+- [x] Browser Support (Chrome/Safari) #Responsiveness
+- [x] Example Post #Content
+- [x] Password Validator JS DOM #DesignAndUsability
+- [x] Search Bar Using PHP #Functionality
+- [x] Writing Posts and Comments to DB using PHP #Functionality
+- [x] Data Retrieval for Dynamic Profile Pages using PHP #Functionality
 - [x] Login/Logout using JS DOM Events #Functionality
 - [x] Password Management #Functionality
 - [x] Reading Posts and Comments from DB using PHP #Functionality

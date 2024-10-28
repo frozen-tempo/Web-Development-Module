@@ -1,3 +1,5 @@
+/* Login Button Styling */
+
 .primary-button {
   background-color: #234f3b;
   color: white;
@@ -31,13 +33,17 @@
   border: 1px solid #234f3b;
 }
 
-.logo-main {
-  max-width: 150px;
-  height: auto;
-}
+/* Hidden utility class for showing and hiding elements */
 
 .hidden {
   display: none;
+}
+
+/* Login Image Styling */
+
+.logo-main {
+  max-width: 150px;
+  height: auto;
 }
 
 #welcome-image {

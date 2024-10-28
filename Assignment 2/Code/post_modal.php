@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="post-text" class="col-form-label">Post Text:</label>
             <textarea class="form-control" id="post-text" name="post-text"></textarea>

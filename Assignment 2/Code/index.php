@@ -11,7 +11,22 @@ session_start();
     
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        HandleCreateComment($con, $_SESSION['userID'], $_POST['comment-post-id'],$_POST['comment-text']);
+        // Handling of comment posting
+        if (isset($_POST["comment-post-id"]) && isset($_POST["comment-text"])) {
+            HandleCreateComment($con, $_SESSION['userID'], $_POST['comment-post-id'],$_POST['comment-text']);
+        }
+        //Handling of post deletion
+        if (isset($_POST['delete-post'])&& isset($_POST['post_id'])) {
+            DeletePost($con, $_POST['post_id']);
+        }
+        // Handling of comment deletion
+        if (isset($_POST['delete-comment']) && isset($_POST['comment_id'])) {
+            DeleteComment($con, $_POST['comment_id']);
+        }
+        //Handle of post liking and unliking
+        if (isset($_POST['like'])) {
+            HandlePostLike($con,$_SESSION['userID'], $_POST['post_id']);
+        }
     }
 
 ?>
@@ -21,7 +36,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Crowd</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -40,6 +55,7 @@ session_start();
             <div class="col px-0" id="avatar-header">
                 <img src="<?php echo $user_data['profilePhoto']?>"/>
                 <h4 class="w-100 text-center profile-name"><?php echo $user_data['userFirstName'] . " " . $user_data['userLastName'];?></h4>
+                <a href="logout.php">Logout</a>
             </div>
         </div>
         <div class="row">
@@ -74,13 +90,33 @@ session_start();
                     foreach ($feed_posts as $post) {
                         $post_comments = GetPostComments($con, $post);
                         $post_user_data = GetUserInfo($con, $post['userID']);
+                        $like_state = IsPostLiked($con, $_SESSION['userID'],$post['postID']) ? "liked" : "like";
+                        $like_class = IsPostLiked($con, $_SESSION['userID'],$post['postID']) ? "btn liked" : "btn not-liked";
+                        $delete_post_icon = $_SESSION["userLevel"] == "admin" ? 
+                        "<form method='post'>
+                            <input class='sr-only' name='post_id' value='$post[postID]' type='hidden'>
+                            <button name='delete-post' type = 'submit''><img class='delete-icon'src='./Assets/delete.svg'/></button>
+                        </form>" : "<p></p>" ;
+                        if (strlen($post["postPhoto"]) !== 0) {
+                            $post_img = "<img class='post-photo' src='$post[postPhoto]'/>";
+                        }
+                        else {
+                            $post_img = "<div class='sr-only'></div>";
+                        }
+
                         $comments = "";
                         foreach ($post_comments as $comment) {
                             $commenter_data = GetUserInfo($con, $comment['userID']);
+                            $delete_comment_icon = $_SESSION["userLevel"] == "admin" ? 
+                            "<form method='post'>
+                                <input class='sr-only' name='comment_id' value='$comment[commentID]' type='hidden'>
+                                <button name='delete-comment' type = 'submit''><img class='delete-icon'src='./Assets/delete.svg'/></button>
+                            </form>" : "<p></p>" ;
                             $comments .=
                             "<div class='d-flex my-2 rounded'>
-                                <div class=''>
+                                <div class='d-flex flex-column align-items-center'>
                                     <img class='post-avatar'src='$commenter_data[profilePhoto]'/>
+                                    $delete_comment_icon
                                 </div>
                                 <div class = 'w-100 p-2 rounded bg-light'>
                                     <h6 class='post-name'>$commenter_data[userFirstName] $commenter_data[userLastName]</h6>
@@ -90,18 +126,23 @@ session_start();
                             }
                         echo 
                         "<div class='p-2 rounded shadow-sm d-flex my-3'>
-                            <div class=''>
+                            <div class='d-flex flex-column align-items-center'>
                                 <img class='post-avatar'src='$post_user_data[profilePhoto]'/>
+                                $delete_post_icon
                             </div>
                             <div class='d-flex flex-column w-100'>
                                 <div class = 'w-100 px-2'>
                                     <h6 class='post-name'>$post_user_data[userFirstName] $post_user_data[userLastName]</h6>
                                     <small><i>$post[postCreationDate]</i></small>
                                     <p class ='post-content text-justify'>$post[postText]</p>
+                                    $post_img
                                     <hr>
                                 </div>
                                 <div class='d-flex justify-content-end m-1'>
-                                    <button type = 'button' class='mx-2 btn btn-danger rounded'>Like</button>
+                                    <form method = 'post'>
+                                        <input class='sr-only' name='post_id' value='$post[postID]' type='hidden'>
+                                        <button name='like' type = 'submit' class='$like_class' '>$like_state</button>
+                                    </form>
                                     <button 
                                     type = 'button' 
                                     class='mx-2 btn brand-primary rounded' 
@@ -122,7 +163,6 @@ session_start();
             </div>
             <div class="col-lg-3 col-md-2 my-auto"></div>
         </div>
-        <a href="logout.php">Logout</a>
     </div>
     <script src="index.js";></script>
 </body>

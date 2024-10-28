@@ -9,3 +9,12 @@
   background-color: #234f3b;
   color: white;
 }
+
+.secondary-button {
+  background-color: white;
+  color: #234f3b !important;
+  border: 1px solid #234f3b;
+  font-weight: bold;
+  cursor: pointer;
+  height: 35px;
+}

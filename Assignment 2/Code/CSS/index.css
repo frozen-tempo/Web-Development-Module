@@ -1,5 +1,11 @@
+body {
+  height: 100vh;
+}
+
+/* Avatar Header Styling */
+
 #avatar-header {
-  background-color: #bf56ae;
+  background-color: #4ea67e;
   height: 25vh;
 }
 
@@ -14,12 +20,21 @@
   border-radius: 50%;
 }
 
+#avatar-header > a {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
 .profile-name {
   position: absolute;
   bottom: -85px;
   left: 50%;
   transform: translate(-50%, 0%);
 }
+
+/* Friend List Styling */
 
 .friend-avatar {
   width: 100px;
@@ -28,11 +43,18 @@
   border-radius: 50%;
 }
 
+/* Post Styling */
+
 .post-avatar {
   width: 50px;
   height: auto;
   border: 1px solid white;
   border-radius: 50%;
+}
+
+.delete-icon {
+  width: 25px;
+  height: auto;
 }
 
 .post-name {
@@ -43,4 +65,35 @@
 
 .post-content {
   margin-top: 20px;
+}
+
+.post-photo {
+  width: 100%;
+  height: auto;
+}
+
+.liked {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  transition: all 250ms;
+  border: 1px solid red;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  height: 100%;
+}
+
+.not-liked {
+  background-color: white;
+  color: red;
+  font-weight: bold;
+  transition: all 250ms;
+  border: 1px solid red;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  height: 100%;
 }
